@@ -1,13 +1,13 @@
 //Import a library to help create a component
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
-import AlbumList from './src/components/AlbumList';
+import FraphoList from './src/components/FraphoList';
 import { StackNavigator } from 'react-navigation';
 
 
 const RootNavigator = StackNavigator({
-    AlbumList: {
-        screen: AlbumList,
+  FraphoList: {
+        screen: FraphoList,
     },
     /*DetailScreen: {
         screen: DetailScreen,
@@ -21,5 +21,5 @@ const App = () => (
 );
 
 //render it to the screen
-AppRegistry.registerComponent('frapho', () => App);
+AppRegistry.registerComponent('Frapho', () => App);
 export default App; 
