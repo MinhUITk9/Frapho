@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection'; 
+import { StackNavigator } from 'react-navigation';
 
-const FraphoDetail = ({ album }) => {
+const FraphoDetail = (props) => {
+
+    const album = props.album;
 
     const { id, name, image_default, image_frames } = album;
     const { thumbnailStyle, headerContentStyle, thumbnailContainerStyle, headerTextStyle, imageStyle, imageDefaultStyle } = styles;
@@ -24,19 +27,22 @@ const FraphoDetail = ({ album }) => {
                     <Text>{id}</Text>
                 </ View>
             </ CardSection>
+            <TouchableOpacity onPress={() => props.navigation.navigate('ControlCenter', { image: image_frames })}>
+            
+                <CardSection>
+                    <Image style={imageDefaultStyle} source={{ uri: image_default }} />
+                    {  
+                        image_frames.map(function (item) {
+                            //
+                            return (<Image 
+                                style={imageStyle}
+                                source={{ uri: item }} 
+                            />);
+                        })
 
-            <CardSection>
-                <Image style={imageDefaultStyle} source={{ uri: image_default }} />
-                {  
-                    image_frames.map(function (item) {
-                        return (<Image 
-                            style={imageStyle}
-                            source={{ uri: item }} 
-                        />);
-                    })
-
-                }
-            </CardSection>
+                    }
+                </CardSection>
+            </TouchableOpacity>
         </Card>
     );
 };

@@ -8,11 +8,7 @@ class FraphoList extends Component {
         headerTitleStyle: { alignSelf: 'center' },
         title: 'Frapho',
       };
-    /*static async getInitialProps() {
-        const res = axios.get('https://frapho.com/api/get-frames?limit=1');
-        const data = await res.json;
-        return data;
-    }*/
+      
     state ={ albums: {
         data: []
     } };
@@ -23,7 +19,7 @@ class FraphoList extends Component {
 
     renderAlbums() {
         return this.state.albums.data.map(album => 
-            <FraphoDetail key={album.id} album={album} />);
+            <FraphoDetail key={album.id} album={album} navigation={this.props.navigation} />);
     }
     
     render() {
