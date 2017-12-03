@@ -9,13 +9,15 @@ class ControlCenter extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
-        (console.log(props.navigation.state.params.image));
+        this.state = { data: props.navigation.state.params.image };
+        
+        //(console.log(props.navigation.state.params.image));
+        
     }
 
     render() {
         return (
-            <Text> Hello </Text>
+            <Text> {this.state.data} </Text>
         );
     }
 }
