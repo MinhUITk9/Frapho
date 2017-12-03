@@ -12,7 +12,6 @@ class ControlCenter extends Component {
         this.state = { data: props.navigation.state.params.image };
         
         //(console.log(props.navigation.state.params.image));
-        
     }
 
     render() {
