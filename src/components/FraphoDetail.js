@@ -26,7 +26,7 @@ const FraphoDetail = (props) => {
                     <Text>{id}</Text>
                 </ View>
             </ CardSection>
-            <TouchableOpacity onPress={() => props.navigation.navigate('ControlCenter', { image: image_frames })}>
+            <TouchableOpacity onPress={() => props.navigation.navigate('ControlCenter', { image: image_frames, name_image: name })}>
             
                 <CardSection>
                     <Image style={imageDefaultStyle} source={{ uri: image_default }} />
