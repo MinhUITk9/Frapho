@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection'; 
-import { StackNavigator } from 'react-navigation';
 
 const FraphoDetail = (props) => {
 
