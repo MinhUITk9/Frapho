@@ -66,7 +66,8 @@ class ControlCenter extends Component {
                         })
                     }
                     <Image style={styles.imageEditableStyle} source={{ uri: this.state.image }} />
-                    <View style={styles.buttonContainer}>
+                </View>
+                <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.button} onPress={this.chooseImage}>
                             <Text style={styles.buttonText}>Choose...</Text>
                         </TouchableOpacity>
@@ -75,7 +76,6 @@ class ControlCenter extends Component {
                                 <Text style={styles.buttonText}>Save</Text>
                             </TouchableOpacity>
                         )}
-                    </View>
                 </View>
             </View>
         );
