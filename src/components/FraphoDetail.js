@@ -36,7 +36,6 @@ const FraphoDetail = (props) => {
                                 source={{ uri: item }} 
                             />);
                         })
-
                     }
                 </CardSection>
             </TouchableOpacity>
