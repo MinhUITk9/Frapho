@@ -50,7 +50,10 @@ const styles = {
         justifyContent: 'space-around'
     },
     headerTextStyle: {
-        fontSize: 18
+        fontSize: 18,
+        color: '#337AB7',
+        textDecorationLine: 'underline',
+        textAlign: 'justify'
     },
     thumbnailStyle: {
         height: 50,

@@ -24,7 +24,7 @@ class FraphoList extends Component {
     
     render() {
         return (
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: '#b2ebf2' }}>
                 {this.renderAlbums()}
             </ScrollView>
         );

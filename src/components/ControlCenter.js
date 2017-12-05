@@ -51,6 +51,7 @@ const styles = {
         fontSize: 15,
         fontWeight: 'bold',
         fontFamily: 'Cochin',
+        textAlign: 'center'
     }
 };
 

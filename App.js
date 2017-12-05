@@ -16,10 +16,16 @@ const RootNavigator = StackNavigator({
 });
 //Creat a component
 const App = () => (
-    <View style={{ flex: 1 }}>
+    <View style={styles.containerStyle}>
         <RootNavigator />
     </View>
 );
+
+const styles = {
+    containerStyle: {
+        flex: 1
+    }
+};
 
 //render it to the screen
 AppRegistry.registerComponent('Frapho', () => App);
