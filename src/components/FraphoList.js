@@ -25,7 +25,7 @@ class FraphoList extends Component {
     
     render() {
         return (
-            <ScrollView style={{ backgroundColor: '#b2ebf2' }}>
+            <ScrollView style={{ backgroundColor: '#e9ebee' }}>
                 {<StatusBar
                     backgroundColor="#00251a"
                     barStyle="light-content"

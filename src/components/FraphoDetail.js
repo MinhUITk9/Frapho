@@ -25,7 +25,6 @@ const FraphoDetail = (props) => {
                 </ View>
             </ CardSection>
             <TouchableOpacity onPress={() => props.navigation.navigate('ControlCenter', { image: image_frames, name_image: name })}>
-            
                 <CardSection>
                     <Image style={imageDefaultStyle} source={{ uri: image_default }} />
                     {  
@@ -49,14 +48,19 @@ const styles = {
         justifyContent: 'space-around'
     },
     headerTextStyle: {
-        fontSize: 18,
+        fontSize: 15,
         color: '#337AB7',
         textDecorationLine: 'underline',
-        textAlign: 'justify'
+        fontFamily: 'Cochin',
+        fontWeight: 'bold',
+        flexWrap: 'wrap',
+        flex: 1,
+        width: 300
     },
     thumbnailStyle: {
         height: 50,
-        width: 50
+        width: 50,
+        borderRadius: 100,
     },
     thumbnailContainerStyle: {
         justifyContent: 'center',

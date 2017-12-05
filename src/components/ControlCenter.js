@@ -54,27 +54,28 @@ class ControlCenter extends Component {
 
     render() { 
         return (
-            <View style={styles.imageStyleContainer}>
+            <View style={{ backgroundColor: '#e9ebee', height: '100%' }}>
                 <Text style={styles.TitleStyle}>{this.state.name}</Text>   
-                {
-                    this.state.image_frame.map((item) => {
-                        return (<Image 
-                            style={styles.imageStyle}
-                            source={{ uri: item }} 
-                        />);
-                    })
-                }
-                <Image style={styles.imageEditableStyle} source={{ uri: this.state.image }} />
-                
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.button} onPress={this.chooseImage}>
-                        <Text style={styles.buttonText}>Choose...</Text>
-                    </TouchableOpacity>
-                    {this.renderIf(this.state.isSave,
-                        <TouchableOpacity style={styles.button} onPress={this.chooseImageFromCamera}>
-                            <Text style={styles.buttonText}>Save</Text>
+                <View style={styles.imageStyleContainer}>
+                    {
+                        this.state.image_frame.map((item) => {
+                            return (<Image 
+                                style={styles.imageStyle}
+                                source={{ uri: item }} 
+                            />);
+                        })
+                    }
+                    <Image style={styles.imageEditableStyle} source={{ uri: this.state.image }} />
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.button} onPress={this.chooseImage}>
+                            <Text style={styles.buttonText}>Choose...</Text>
                         </TouchableOpacity>
-                    )}
+                        {this.renderIf(this.state.isSave,
+                            <TouchableOpacity style={styles.button} onPress={this.chooseImageFromCamera}>
+                                <Text style={styles.buttonText}>Save</Text>
+                            </TouchableOpacity>
+                        )}
+                    </View>
                 </View>
             </View>
         );
@@ -87,7 +88,7 @@ const styles = {
         alignItems: 'center',
         marginLeft: 10,
         marginRight: 10,
-        marginTop: 10
+        marginTop: 10,
     },
     imageStyle: {
         marginBottom: 15,
@@ -99,7 +100,9 @@ const styles = {
         fontSize: 15,
         fontWeight: 'bold',
         fontFamily: 'Cochin',
-        textAlign: 'center'
+        textAlign: 'center',
+        color: '#333',
+        paddingTop: 10
     },
     button: {
         backgroundColor: '#E34517',
