@@ -19,7 +19,7 @@ class ControlCenter extends Component {
             <View style={styles.imageStyleContainer}>
                 <Text style={styles.TitleStyle}>{this.state.name}</Text>   
                 {
-                    this.state.image_frame.map(function (item) {
+                    this.state.image_frame.map((item) => {
                         return (<Image 
                             style={styles.imageStyle}
                             source={{ uri: item }} 

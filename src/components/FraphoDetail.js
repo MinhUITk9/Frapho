@@ -4,9 +4,7 @@ import Card from './Card';
 import CardSection from './CardSection'; 
 
 const FraphoDetail = (props) => {
-
     const album = props.album;
-
     const { id, name, image_default, image_frames } = album;
     const { thumbnailStyle, headerContentStyle, thumbnailContainerStyle, headerTextStyle, imageStyle, imageDefaultStyle } = styles;
     return (
@@ -31,7 +29,7 @@ const FraphoDetail = (props) => {
                 <CardSection>
                     <Image style={imageDefaultStyle} source={{ uri: image_default }} />
                     {  
-                        image_frames.map(function (item) {
+                        image_frames.map((item) => {
                             //
                             return (<Image 
                                 style={imageStyle}
