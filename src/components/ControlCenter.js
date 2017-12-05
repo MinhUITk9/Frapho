@@ -17,7 +17,7 @@ class ControlCenter extends Component {
     render() {
         return (
             <View style={styles.imageStyleContainer}>
-                <Text>{this.state.name}</Text>   
+                <Text style={styles.TitleStyle}>{this.state.name}</Text>   
                 {
                     this.state.image_frame.map(function (item) {
                         return (<Image 
@@ -42,8 +42,15 @@ const styles = {
         marginTop: 10
     },
     imageStyle: {
+        marginBottom: 15,
+        marginTop: 10,
         height: 300,
-        width: 300
+        width: 300,
+    },
+    TitleStyle: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        fontFamily: 'Cochin',
     }
 };
 
