@@ -5,8 +5,9 @@ import FraphoDetail from './FraphoDetail';
 
 class FraphoList extends Component {
     static navigationOptions = {
-        headerTitleStyle: { alignSelf: 'center' },
+        headerTitleStyle: { alignSelf: 'center', color: '#FFFFFF' },
         title: 'Frapho',
+        headerStyle: { backgroundColor: '#0B4239' },
       };
       
     state ={ albums: {

@@ -11,7 +11,7 @@ const RootNavigator = StackNavigator({
         screen: FraphoList,
     },
     ControlCenter: {
-        screen: ControlCenter,
+        screen: ControlCenter, 
     },
 });
 //Creat a component

@@ -4,7 +4,7 @@ import { Image, View, Text } from 'react-native';
 class ControlCenter extends Component {
     static navigationOptions = {
         headerTitleStyle: { alignSelf: 'center' },
-        title: 'Frapho',  
+        title: 'Frapho'
     };
 
     constructor(props) {
