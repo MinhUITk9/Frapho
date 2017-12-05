@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, } from 'react-native';
+import { ScrollView, StatusBar } from 'react-native';
 import axios from 'axios';
 import FraphoDetail from './FraphoDetail';
 
@@ -26,6 +26,10 @@ class FraphoList extends Component {
     render() {
         return (
             <ScrollView style={{ backgroundColor: '#b2ebf2' }}>
+                {<StatusBar
+                    backgroundColor="#00251a"
+                    barStyle="light-content"
+                /> }
                 {this.renderAlbums()}
             </ScrollView>
         );
