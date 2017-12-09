@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Image, View, Text, TouchableOpacity } from 'react-native';
+import PhotoView from 'react-native-photo-view';
 
 const Platform = require('react-native').Platform;
 const ImagePicker = require('react-native-image-picker');
@@ -65,7 +66,7 @@ class ControlCenter extends Component {
                             />);
                         })
                     }
-                    <Image style={styles.imageEditableStyle} source={{ uri: this.state.image }} />
+                    <PhotoView minimumZoomScale={0.5} maximumZoomScale={3} androidScaleType="center" style={styles.imageEditableStyle} source={{ uri: this.state.image }} />
                 </View>
                 <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.button} onPress={this.chooseImage}>
@@ -125,7 +126,7 @@ const styles = {
         height: 300,
         width: 300,
         position: 'absolute',
-        top: 48,
+        top: 10,
         left: 45.7,
         zIndex: -1
     }
