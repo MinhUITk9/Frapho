@@ -3,18 +3,8 @@ import { Image, View, Text, TouchableOpacity, CameraRoll } from 'react-native';
 import PhotoView from 'react-native-photo-view';
 import { captureRef, ViewShot } from 'react-native-view-shot';
 
-
 const Platform = require('react-native').Platform;
 const ImagePicker = require('react-native-image-picker');
-
-// captureRef(viewRef, {
-//     format: 'jpg',
-//     quality: 0.8
-//   })
-//   .then(
-//     uri => console.log('Image saved to', uri),
-//     error => console.error('Oops, snapshot failed', error)
-//   );
 
 class ControlCenter extends Component {
     static navigationOptions = {
