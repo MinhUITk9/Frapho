@@ -1,23 +1,52 @@
 import React, { Component } from 'react';
-import { Image, View, Text, TouchableOpacity } from 'react-native';
+import { Image, View, Text, TouchableOpacity, CameraRoll } from 'react-native';
 import PhotoView from 'react-native-photo-view';
+import { captureRef, ViewShot } from 'react-native-view-shot';
+
 
 const Platform = require('react-native').Platform;
 const ImagePicker = require('react-native-image-picker');
+
+// captureRef(viewRef, {
+//     format: 'jpg',
+//     quality: 0.8
+//   })
+//   .then(
+//     uri => console.log('Image saved to', uri),
+//     error => console.error('Oops, snapshot failed', error)
+//   );
 
 class ControlCenter extends Component {
     static navigationOptions = {
         headerTitleStyle: { alignSelf: 'center', color: '#FFFFFF' },
         title: 'Frapho',
         headerStyle: { backgroundColor: '#0B4239' },
-      };
+    };
 
     constructor(props) {
         super(props);
-        this.state = { image_frame: props.navigation.state.params.image, name: props.navigation.state.params.name_image, image: null, isSave: false };   
+        this.state = { image_frame: props.navigation.state.params.image, name: props.navigation.state.params.name_image, image: null, isSave: false, link_uri: null };   
         (console.log(props.navigation.state.params.name_image));
         this.chooseImage = this.chooseImage.bind(this);
+        this.snapshot = this.snapshot.bind(this);
     }
+
+    componentDidMount() {
+       const input = this.refs.viewShot;
+       console.log(input);
+    }
+    snapshot(refname) {
+        console.log(this.refs[refname]);
+        captureRef(this.refs[refname], { format: 'jpg', quality: 1.0 })
+            .then(
+                //uri => console.log('Image saved to', uri),
+                uri => CameraRoll.saveToCameraRoll(uri, 'photo'),
+                //uri => this.setState({ link_uri: uri }),
+                //console.log(this.state.link_uri),
+                error => console.error('Oops, snapshot failed', error)
+            );
+    }
+    
 
     chooseImage() {
         ImagePicker.showImagePicker({ noData: true }, (response) => {
@@ -56,24 +85,29 @@ class ControlCenter extends Component {
     render() { 
         return (
             <View style={{ backgroundColor: '#e9ebee', height: '100%' }}>
-                <Text style={styles.TitleStyle}>{this.state.name}</Text>   
+                <Text style={styles.TitleStyle}>{this.state.name}</Text>
                 <View style={styles.imageStyleContainer}>
-                    {
-                        this.state.image_frame.map((item) => {
-                            return (<Image 
-                                style={styles.imageStyle}
-                                source={{ uri: item }} 
-                            />);
-                        })
-                    }
-                    <PhotoView minimumZoomScale={0.5} maximumZoomScale={3} androidScaleType="center" style={styles.imageEditableStyle} source={{ uri: this.state.image }} />
+                    <View ref='viewShot' collapsable={false}>
+                        {
+                            this.state.image_frame.map((item) => {
+                                return (<Image 
+                                    style={styles.imageStyle}
+                                    source={{ uri: item }} 
+                                />);
+                            })
+                        }
+                        <PhotoView minimumZoomScale={0.5} maximumZoomScale={3} androidScaleType="center" style={styles.imageEditableStyle} source={{ uri: this.state.image }} />
+                    </View>
                 </View>
                 <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.button} onPress={this.chooseImage}>
                             <Text style={styles.buttonText}>Choose...</Text>
                         </TouchableOpacity>
                         {this.renderIf(this.state.isSave,
-                            <TouchableOpacity style={styles.button} onPress={this.chooseImageFromCamera}>
+                            <TouchableOpacity 
+                                style={styles.button} 
+                                onPress={() => this.snapshot('viewShot')}
+                            >
                                 <Text style={styles.buttonText}>Save</Text>
                             </TouchableOpacity>
                         )}
@@ -127,7 +161,7 @@ const styles = {
         width: 300,
         position: 'absolute',
         top: 10,
-        left: 45.7,
+        //left: 30.7,
         zIndex: -1
     }
 };

@@ -14,7 +14,7 @@ class FraphoList extends Component {
         data: []
     } };
     componentWillMount() {
-        axios.get('https://frapho.com/api/get-frames?limit=10')
+        axios.get('https://frapho.com/api/get-frames?limit=12')
          .then(response => this.setState({ albums: response.data }));
     }
 
