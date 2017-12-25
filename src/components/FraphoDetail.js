@@ -5,7 +5,7 @@ import CardSection from './CardSection';
 
 const FraphoDetail = (props) => {
     const album = props.album;
-    const { id, name, image_default, image_frames } = album;
+    const { id, name, image_default, image_frames, created_time } = album;
     const { thumbnailStyle, headerContentStyle, thumbnailContainerStyle, headerTextStyle, imageStyle, imageDefaultStyle } = styles;
     return (
         <Card>
@@ -21,7 +21,7 @@ const FraphoDetail = (props) => {
                 </ View>
                 <View style={headerContentStyle}>
                     <Text style={headerTextStyle}>{name}</Text>
-                    <Text>{id}</Text>
+                    <Text>{created_time}</Text>
                 </ View>
             </ CardSection>
             <TouchableOpacity onPress={() => props.navigation.navigate('ControlCenter', { image: image_frames, name_image: name })}>

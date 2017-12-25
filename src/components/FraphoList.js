@@ -12,10 +12,19 @@ class FraphoList extends Component {
       
     state ={ albums: {
         data: []
-    } };
+    }, 
+    text: '' };
     componentWillMount() {
         axios.get('https://frapho.com/api/get-frames?limit=12')
          .then(response => this.setState({ albums: response.data }));
+    }
+
+    searchAlbums(key_word) {
+        console.log(key_word);
+        axios.get('https://frapho.com/api/get-frames?key=' + key_word)
+         .then(response => this.setState({ albums: response.data }));
+        return this.state.albums.data.map(album => 
+            <FraphoDetail key={album.id} album={album} navigation={this.props.navigation} />);
     }
 
     renderAlbums() {
@@ -27,9 +36,11 @@ class FraphoList extends Component {
         return (
         <View>
             <View style={style.container}>
-                    <TextInput style={style.inputBox} placeholder="Key word: "></TextInput>
-                    <TouchableOpacity style={style.btnStyle}>
-                        <Text>🔍 Search</Text>
+                    <TextInput style={style.inputBox} placeholder="Key word: " onChangeText={(text) => this.setState({ text })}></TextInput>
+                    <TouchableOpacity 
+                        style={style.btnStyle} 
+                        onPress={() => this.searchAlbums(this.state.text)}>
+                            <Text>🔍 Search</Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
                         <Image source={require('../qr-code.png')} />
