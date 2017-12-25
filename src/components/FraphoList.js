@@ -25,12 +25,8 @@ class FraphoList extends Component {
     
     render() {
         return (
-            <ScrollView style={{ backgroundColor: '#e9ebee' }}>
-                {<StatusBar
-                    backgroundColor="#00251a"
-                    barStyle="light-content"
-                /> }
-                <View style={style.container}>
+        <View>
+            <View style={style.container}>
                     <TextInput style={style.inputBox} placeholder="Key word: "></TextInput>
                     <TouchableOpacity style={style.btnStyle}>
                         <Text>🔍 Search</Text>
@@ -38,16 +34,22 @@ class FraphoList extends Component {
                     <TouchableOpacity>
                         <Image source={require('../qr-code.png')} />
                     </TouchableOpacity>
-                </View>
+            </View>
+            <ScrollView style={{ backgroundColor: '#e9ebee' }}>
+                {<StatusBar
+                    backgroundColor="#00251a"
+                    barStyle="light-content"
+                /> }
+                
                 {this.renderAlbums()}
             </ScrollView>
+        </View>
         );
     }
 }
 
 const style = {
     container: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row'
