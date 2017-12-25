@@ -116,8 +116,8 @@ const styles = {
         marginTop: 10,
     },
     imageStyle: {
-        marginBottom: 15,
-        marginTop: 10,
+        // marginBottom: 15,
+        // marginTop: 10,
         height: 300,
         width: 300,
     },
