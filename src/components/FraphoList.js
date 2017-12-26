@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, StatusBar, TextInput, View, TouchableOpacity, Text, Image } from 'react-native';
 import axios from 'axios';
 import FraphoDetail from './FraphoDetail';
+import QRCodeScanner from 'react-native-qrcode-scanner';
 
 class FraphoList extends Component {
     static navigationOptions = {
