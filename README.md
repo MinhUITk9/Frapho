@@ -1,2 +1,2 @@
 # Frapho
-Mobile app for website: https://frapho.com/
+Mobile client version for website: https://frapho.com/
