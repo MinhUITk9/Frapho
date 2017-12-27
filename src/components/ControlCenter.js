@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, Text, TouchableOpacity, CameraRoll } from 'react-native';
+import { Image, View, Text, TouchableOpacity, CameraRoll, ToastAndroid } from 'react-native';
 import PhotoView from 'react-native-photo-view';
 import { captureRef, ViewShot } from 'react-native-view-shot';
 
@@ -35,6 +35,7 @@ class ControlCenter extends Component {
                 //console.log(this.state.link_uri),
                 error => console.error('Oops, snapshot failed', error)
             );
+        ToastAndroid.show('Save Image successfully !', ToastAndroid.SHORT);
     }
     
 
@@ -80,6 +81,14 @@ class ControlCenter extends Component {
                     <View ref='viewShot' collapsable={false}>
                         {
                             this.state.image_frame.map((item) => {
+                                const frame_url_compare = item.substring(0, 14);
+                                console.log(frame_url_compare);
+                                if ( frame_url_compare !== 'https://vgy.me')
+                                {
+                                    item = 'https://frapho.com/img/frame/' + item;
+                                }
+                                else item = item;
+                                console.log(item);
                                 return (<Image 
                                     style={styles.imageStyle}
                                     source={{ uri: item }} 

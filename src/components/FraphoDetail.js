@@ -5,7 +5,16 @@ import CardSection from './CardSection';
 
 const FraphoDetail = (props) => {
     const album = props.album;
-    const { id, name, image_default, image_frames, created_time } = album;
+    const { id, name, created_time, image_frames } = album;
+    let { image_default } = album;
+    //If server give wrong image_default url
+    const image_default_url_compare = image_default.substring(0, 14);
+    if ( image_default_url_compare !== 'https://vgy.me')
+    {
+        image_default = 'https://frapho.com/img/frame/' + image_default
+    }
+    else image_default = image_default;
+
     const { thumbnailStyle, headerContentStyle, thumbnailContainerStyle, headerTextStyle, imageStyle, imageDefaultStyle } = styles;
     return (
         <Card>
@@ -22,13 +31,21 @@ const FraphoDetail = (props) => {
                 <View style={headerContentStyle}>
                     <Text style={headerTextStyle}>{name}</Text>
                     <Text>{created_time}</Text>
-                </ View>
+                </View>
             </ CardSection>
             <TouchableOpacity onPress={() => props.navigation.navigate('ControlCenter', { image: image_frames, name_image: name })}>
                 <CardSection>
                     <Image style={imageDefaultStyle} source={{ uri: image_default }} />
                     {  
                         image_frames.map((item) => {
+                         const frame_url_compare = item.substring(0, 14);
+                         console.log(frame_url_compare);
+                         if ( frame_url_compare !== 'https://vgy.me')
+                         {
+                             item = 'https://frapho.com/img/frame/' + item;
+                         }
+                         else item = item;
+                         console.log(item);
                             //
                             return (<Image 
                                 style={imageStyle}
