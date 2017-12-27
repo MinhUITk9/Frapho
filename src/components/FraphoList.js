@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ScrollView, StatusBar, TextInput, View, TouchableOpacity, Text, Image } from 'react-native';
 import axios from 'axios';
 import FraphoDetail from './FraphoDetail';
-import QRCodeScanner from 'react-native-qrcode-scanner';
 
 class FraphoList extends Component {
     static navigationOptions = {
@@ -37,13 +36,13 @@ class FraphoList extends Component {
         return (
         <View>
             <View style={style.container}>
-                    <TextInput style={style.inputBox} placeholder="Key word: " onChangeText={(text) => this.setState({ text })}></TextInput>
+                    <TextInput style={style.inputBox} placeholder="Name of Frames: " onChangeText={(text) => this.setState({ text })}></TextInput>
                     <TouchableOpacity 
                         style={style.btnStyle} 
                         onPress={() => this.searchAlbums(this.state.text)}>
                             <Text>🔍 Search</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => console.log(this.props.navigation.navigate('ScanScreen'))}>
                         <Image source={require('../qr-code.png')} />
                     </TouchableOpacity>
             </View>
@@ -68,7 +67,7 @@ const style = {
     },
     inputBox: {
         borderRadius: 25,
-        width: 280,
+        width: '60%',
         height: 45,
         paddingHorizontal: 5,
         fontSize: 16,
